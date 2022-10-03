@@ -42,7 +42,8 @@ public class Roman {
         return this.roman.toCharArray();
     }
 
-    public ArrayList<Integer> createIntArray() {
+    // converting char array into integer array
+    private ArrayList<Integer> createIntArray() {
 
         char[] array = createRomanArray();
 
@@ -51,5 +52,47 @@ public class Roman {
         }
 
         return this.intArray;
+    }
+
+    // returns the final number in decimal form
+    public int getNumeric() {
+        ArrayList<Integer> array = createIntArray();
+        ArrayList<Integer> finalArray = new ArrayList<Integer>();
+
+        for (int counter = 0; counter < array.size() - 1; counter++) {
+
+            if (array.get(counter + 1) > array.get(counter)) {
+                int num = array.get(counter + 1) - array.get(counter);
+                finalArray.add(num);
+                break;
+            } else if (counter == array.size() - 2) {
+                finalArray.add(array.get(counter + 1));
+                finalArray.add(array.get(counter));
+                break;
+            } else {
+                finalArray.add(array.get(counter));
+            }
+
+        }
+
+        int sum = 0;
+
+        for (Integer num : finalArray) {
+            sum += num;
+        }
+
+        return sum;
+    }
+
+    // useless function created for some other meaning less logic
+    public int createNegativeSum(int counter, ArrayList<Integer> array) {
+        int innerCounter = counter;
+        int sum = 0;
+        do {
+            sum = sum + array.get(innerCounter);
+            innerCounter--;
+        } while (array.get(innerCounter) <= array.get(innerCounter + 1));
+
+        return sum;
     }
 }

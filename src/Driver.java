@@ -5,10 +5,7 @@ public class Driver {
         Roman test = new Roman();
 
         // setting value for testing
-        test.setRoman("XIV");
-
-        for (int counter = 0; counter < 3; counter++) {
-            System.out.println(test.createIntArray().get(counter));
-        }
+        test.setRoman("XXVI");
+        System.out.println(test.getNumeric());
     }
 }
